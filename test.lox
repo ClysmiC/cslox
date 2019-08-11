@@ -1,0 +1,32 @@
+class Person {
+    fun init(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class Marriage {
+    fun init(groom, bride) {
+        this.groom = groom;
+        this.bride = bride;
+    }
+
+    fun combinedAge() {
+        return this.groom.age + this.bride.age;
+    }
+}
+
+fun make_adder(n) {
+    fun adder(i) {
+        return n + i;
+    }
+    return adder;
+}
+
+var john = Person("John", 30);
+var jane = Person("Jane", 26);
+
+var addJohnsAge = make_adder(john.age);
+var addBothAges = make_adder(addJohnsAge(jane.age));
+
+print addBothAges(10) + " == " + (Marriage(john, jane).combinedAge() + 10);
